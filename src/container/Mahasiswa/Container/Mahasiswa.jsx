@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Form, Container, Row, Col, Card, Table } from 'react-bootstrap';
@@ -112,12 +112,17 @@ class Mahasiswa extends React.Component {
         // console.log('remove')
         const re = window.confirm('are you sure?')
 
-        if (re == true) {
+        if (re === true) {
             console.log('hapus')
             this.removeDataApi(data)
         } else {
             console.log('no hapus')
         }
+    }
+
+    handleDetail = (id) => {
+        // console.log('detail', id)
+        this.props.history.push('/mahasiswa/detail/'+id)
     }
 
     componentDidMount () {
@@ -127,7 +132,6 @@ class Mahasiswa extends React.Component {
     render() { 
         return (
             <Fragment>
-                <p>mahasiswa</p><hr/>
                 <Container>
                     <Row>
                         <Col>
@@ -181,6 +185,7 @@ class Mahasiswa extends React.Component {
                                                 <td>
                                                     <Button variant="warning" size="sm" style={{marginRight:5}} onClick={() => {this.handleUpdate(data)}}>Update</Button>
                                                     <Button variant="danger" size="sm" style={{marginRight:5}} onClick={() => {this.handleRemove(data)}}>Remove</Button>
+                                                    <Button variant="info" size="sm" style={{marginRight:5}} onClick={() => {this.handleDetail(data.id)}}>Detail</Button>
                                                 </td>
                                             </tr>
                                         )

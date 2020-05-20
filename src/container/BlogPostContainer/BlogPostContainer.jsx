@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import './BlogPostContainer.css'
 import BlogPostComponent from '../../component/BlogPost/BlogPost';
 // import StoreForm from '../../component/BlogPost/StoreForm';
@@ -76,18 +76,23 @@ class BlogPost extends React.Component {
 
     handleSubmit = () => {
         // console.log(this.state.formBlogPost)
-        if (this.state.isUpdate == true) {
+        if (this.state.isUpdate === true) {
             this.putDataApi()
         } else {
             this.postDataApi()
         }
     }
 
+    handleDetailPost = (id) => {
+        // console.log(id)
+        this.props.history.push(`/blog-post/detail/${id}`)
+    }
+
     handleFormChange = (event) => {
         let time = new Date().getTime();
 
         let formBlogPostNew = {...this.state.formBlogPost}
-        if (this.state.isUpdate == false) {
+        if (this.state.isUpdate === false) {
             formBlogPostNew["id"] = time
         }
         formBlogPostNew[event.target.name] = event.target.value
@@ -129,7 +134,7 @@ class BlogPost extends React.Component {
                     </div>
                     {
                         this.state.post.map( (dataPost) => {
-                            return <BlogPostComponent key={dataPost.id} data={dataPost} remove={this.handleRemove} update={this.handleUpdate}/>
+                            return <BlogPostComponent key={dataPost.id} data={dataPost} remove={this.handleRemove} update={this.handleUpdate} goDetail={this.handleDetailPost}/>
                         })
                     }
                 </div>

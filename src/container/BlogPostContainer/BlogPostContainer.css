@@ -1,5 +1,5 @@
 .container {
-    width: 50%;
+    /* width: 50%; */
     margin: 0 auto;
 }
     
@@ -43,6 +43,10 @@
     font-weight: bold;
     color: #3d4a6e;
     margin-bottom: 16px;
+}
+
+.content p.title:hover {
+    cursor: pointer;
 }
 
 .cont p.desc {

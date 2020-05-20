@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import './Product.css';
-import CardProduct from '../CardProduct/CardProduct'
+import CardProduct from '../../component/CardProduct/CardProduct'
 
 class Product extends Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class Product extends Component {
     }
 
     handleChangeCounter = (newValue, operasi) => {
-        if (operasi == "plus") {
+        if (operasi === "plus") {
             this.setState({
                 allOrder : this.state.allOrder + newValue
             })
